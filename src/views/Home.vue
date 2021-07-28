@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Chart from '@/components/Chart.vue';
-import CostsList from '@/components/CostsList.vue';
+import Chart from '@/components/Costs/Chart.vue';
+import CostsList from '@/components/Costs/List.vue';
 
 export default {
   components: {

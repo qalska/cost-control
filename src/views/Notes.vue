@@ -2,17 +2,34 @@
   <div class="notes">
     <h3 class="mt-5 mb-5 d-flex justify-center notes__h3">My Notes</h3>
 
-    <notes-list />
+    <create 
+      @add-note="addNote"
+    />
+
+    <notes-list 
+      :notes="notes"
+    />
   </div>
 </template>
 
 <script>
-import NotesList from '@/components/NotesList.vue';
+import NotesList from '@/components/Notes/List.vue';
+import Create from '@/components/Notes/Create.vue';
 
 export default {
   components: {
-    NotesList
+    NotesList, Create
   },
+  data() {
+    return {
+      notes: [],
+    }
+  },
+  methods: {
+    addNote(newNote) {
+      this.notes.push(newNote)
+    }
+  }
 }
 </script>
 
