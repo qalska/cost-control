@@ -1,9 +1,5 @@
 <template>
-  <div class="notes__create mx-auto">
-
-      <v-btn icon @click="isShow = true">
-          <v-icon>{{ mdiPlusThick }}</v-icon>
-      </v-btn>
+  <div class="notes__create">
 
       <v-form v-if="isShow">
         <v-select
@@ -19,7 +15,7 @@
             required>
         </v-text-field>
 
-        <div class="mb-4">
+        <div class="mb-4 d-flex justify-end">
             <v-btn
                 color="success"
                 @click="createNote">
@@ -29,7 +25,7 @@
             <v-btn
                 color="error"
                 class="ml-4"
-                @click="isShow = false">
+                @click="changeIsShow()">
                 Close
             </v-btn>
         </div>
@@ -38,9 +34,15 @@
 </template>
 
 <script>
-import { mdiPlusThick } from '@mdi/js';
 
 export default {
+    props: {
+        isShow: {
+            type: Boolean,
+            require: true,
+            default: false
+        }
+    },
     data() {
         return {
             note: {
@@ -50,18 +52,27 @@ export default {
                 date: null,
             },
             categories: ['1', '2', '3'],
-            isShow: false,
-            mdiPlusThick
         }
     },
     methods: {
+        formatDate(date) {
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long',
+                timezone: 'UTC',
+            };
+
+            return date.toLocaleString("en-US", options);
+        },
         createNote() {
             let newNote = {
                 ...this.note,
                 id: this.note.id++,
                 category: this.note.category,
                 text: this.note.text,
-                date: new Date(),
+                date: this.formatDate(new Date()),
                 isEditing: false
             }
 
@@ -70,14 +81,10 @@ export default {
             this.note.category = '';
             this.note.text = '';
             this.note.date = null;
+        },
+        changeIsShow() {
+            this.$emit('change-is-show', this.isShow);
         }
     }
 }
 </script>
-
-<style lang="scss" scoped>
-    .notes__create {
-        width: 80%;
-    }
-
-</style>

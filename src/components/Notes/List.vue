@@ -1,32 +1,31 @@
 <template>
-  <div>
-    <v-simple-table class="notes-list__table">
-      <template v-slot:default>
-        <tbody>
-          <tr v-for="note of notes"
-            :key="note.id">
-            <td class="notes-list__category">{{ note.category }}</td>
-            <td class="notes-list__date">{{ note.date }}</td>
-            <td class="notes-list__text"> 
-              <div class="notes-list__text-wrapper">
-                  {{ note.text }}
-              </div>
-            </td>
-            <td class="notes-list__actions">
-              <div>
-                <v-btn icon text class="notes-list__edit" >
-                    <v-icon>{{ icons.mdiPencil }}</v-icon>
-                </v-btn>
-                <v-btn icon text class="notes-list__delete ml-2">
-                    <v-icon>{{ icons.mdiDelete }}</v-icon>
-                </v-btn>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </template>
-    </v-simple-table>
-  </div>
+  <ul class="notes__list pl-0">
+    <li class="pl-3 pb-2 pt-1 mb-3"
+      v-for="note of notes"
+      :key="note.id">
+      <div class="d-flex justify-space-between">
+          <div class="text-overline mb-4">
+            {{ note.date }}
+          </div>
+
+          <div>
+            <v-btn icon text class="costs-list__edit" >
+              <v-icon>{{ icons.mdiPencil }}</v-icon>
+            </v-btn>
+            <v-btn icon text class="costs-list__delete ml-2">
+              <v-icon>{{ icons.mdiDelete }}</v-icon>
+            </v-btn>
+          </div>
+      </div>
+      <p class="text-h5 mb-2">
+        {{ note.category }}
+      </p>
+      <p>
+        {{ note.text }}
+      </p>
+
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -49,7 +48,17 @@ export default {
         mdiPencil,
         mdiDelete,
       },
+      active: false
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  li {
+    list-style-type: none;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 3px 5px 0px rgba(34, 60, 80, 0.2);
+  }
+</style>
