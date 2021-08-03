@@ -1,6 +1,12 @@
 <template>
   <div class="costs-list">
-    <h2>Costs List</h2>
+    <div class="d-flex flex-row justify-center">
+      <h2 class="mt-2 mb-2 costs-list__h3">Costs List</h2>
+
+      <v-btn class="mt-1 ml-2" icon x-large @click="isShow = !isShow">
+        <v-icon>{{ icons.mdiPlusThick }}</v-icon>
+      </v-btn>
+    </div>
 
     <div class="costs-list__wrapper mt-4">
         <div class="mr-2">
@@ -39,6 +45,7 @@
 import {
     mdiPencil,
     mdiDelete,
+    mdiPlusThick
 } from '@mdi/js'
 
 export default {
@@ -47,6 +54,7 @@ export default {
       icons: {
         mdiPencil,
         mdiDelete,
+        mdiPlusThick
       },
     }
   }
@@ -56,6 +64,10 @@ export default {
 <style lang="scss" scoped>
     .costs-list{
         width: 60%;
+        &__h3{
+            font-size: 30px;
+            color: #757575;
+        }
         &__wrapper{
             overflow: auto;
             height: 80%;

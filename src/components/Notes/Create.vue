@@ -51,7 +51,7 @@ export default {
                 text: '',
                 date: null,
             },
-            categories: ['1', '2', '3'],
+            categories: ['1', '2', '3'], // временно
         }
     },
     methods: {

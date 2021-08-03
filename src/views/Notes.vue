@@ -39,6 +39,7 @@ export default {
   methods: {
     addNote(newNote) {
       this.notes.push(newNote)
+      this.isShow = false;
     },
     changeIsShow(isShow) {
       this.isShow = false;

@@ -1,28 +1,57 @@
 <template>
   <ul class="notes__list pl-0">
-    <li class="pl-3 pb-2 pt-1 mb-3"
-      v-for="note of notes"
-      :key="note.id">
-      <div class="d-flex justify-space-between">
+    <li class="pl-3 pr-3 pb-2 pt-1 mb-3"
+      v-for="(note, idx) of notes"
+      :key="idx">
+      <div v-show="!note.isEditing">
+        <div class="d-flex justify-space-between">
           <div class="text-overline mb-4">
             {{ note.date }}
           </div>
 
           <div>
-            <v-btn icon text class="costs-list__edit" >
+            <v-btn icon text
+            @click="editNote(idx)">
               <v-icon>{{ icons.mdiPencil }}</v-icon>
             </v-btn>
-            <v-btn icon text class="costs-list__delete ml-2">
+            <v-btn icon text class="ml-2"
+            @click="deleteNote(idx)">
               <v-icon>{{ icons.mdiDelete }}</v-icon>
             </v-btn>
           </div>
+        </div>
+        <p class="text-h5 mb-2">
+          {{ note.category }}
+        </p>
+        <p>
+          {{ note.text }}
+        </p>
       </div>
-      <p class="text-h5 mb-2">
-        {{ note.category }}
-      </p>
-      <p>
-        {{ note.text }}
-      </p>
+
+      <div v-show="note.isEditing">
+        <v-form>
+          <v-select
+              v-model="note.category"
+              :items="categories"
+              label="Category"
+              required>
+          </v-select>
+
+          <v-text-field
+              v-model="note.text"
+              label="Text"
+              required>
+          </v-text-field>
+
+          <div class="mb-4 d-flex justify-end">
+              <v-btn
+                  color="success"
+                  @click="note.isEditing = false">
+                  Save
+              </v-btn>
+          </div>
+        </v-form>
+      </div>
 
     </li>
   </ul>
@@ -48,7 +77,16 @@ export default {
         mdiPencil,
         mdiDelete,
       },
-      active: false
+      categories: ['1', '2', '3'] // временно
+    }
+  },
+  methods: {
+    editNote(idx) {
+      let note = this.notes[idx];
+      note.isEditing = true;
+    },
+    deleteNote(idx) {
+      this.notes.splice(idx, 1);
     }
   }
 }
