@@ -1,0 +1,89 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "rent",
+      "total": null
+    },
+    {
+      "id": 2,
+      "title": "car",
+      "total": null
+    },
+    {
+      "id": 3,
+      "title": "credits",
+      "total": null
+    },
+    {
+      "id": 4,
+      "title": "public transport",
+      "total": null
+    },
+    {
+      "id": 5,
+      "title": "travels",
+      "total": null
+    },
+    {
+      "id": 6,
+      "title": "hygiene and health",
+      "total": null
+    },
+    {
+      "id": 7,
+      "title": "clothing and cosmetics",
+      "total": null
+    },
+    {
+      "id": 8,
+      "title": "food",
+      "total": null
+    },
+    {
+      "id": 9,
+      "title": "internet and cellular communication",
+      "total": null
+    },
+    {
+      "id": 10,
+      "title": "entertainment and gifts",
+      "total": null
+    },
+    {
+      "id": 11,
+      "title": "other",
+      "total": null
+    }
+  ],
+  "costs": [
+    {
+      "id": 1,
+      "category_title": "rent",
+      "sum": "1 200",
+      "date" : "",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+    },
+    {
+      "id": 2,
+      "category_title": "food",
+      "sum": "200",
+      "date" : "",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+    },
+    {
+      "id": 3,
+      "category_title": "clothing and cosmetics",
+      "sum": "100",
+      "date" : "",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+    },
+    {
+      "id": 4,
+      "category_title": "travelst",
+      "sum": "300",
+      "date" : "",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+    }
+  ]
+}
