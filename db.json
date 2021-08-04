@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "rent",
-      "total": null
+      "total": 1200
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
     {
       "id": 5,
       "title": "travels",
-      "total": null
+      "total": 300
     },
     {
       "id": 6,
@@ -33,12 +33,12 @@
     {
       "id": 7,
       "title": "clothing and cosmetics",
-      "total": null
+      "total": 100
     },
     {
       "id": 8,
       "title": "food",
-      "total": null
+      "total": 200
     },
     {
       "id": 9,
@@ -61,28 +61,24 @@
       "id": 1,
       "category_title": "rent",
       "sum": "1 200",
-      "date" : "",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien."
     },
     {
       "id": 2,
       "category_title": "food",
       "sum": "200",
-      "date" : "",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
     },
     {
       "id": 3,
       "category_title": "clothing and cosmetics",
       "sum": "100",
-      "date" : "",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien."
     },
     {
       "id": 4,
-      "category_title": "travelst",
+      "category_title": "travels",
       "sum": "300",
-      "date" : "",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
     }
   ]

@@ -13,13 +13,13 @@
             <v-simple-table class="costs-list__table">
                 <template v-slot:default>
                     <tbody>
-                        <tr>
-                            <td class="costs-list__category">Category</td>
-                            <td class="costs-list__sum">123 RUB</td>
+                        <tr v-for="(cost, idx) in getAllCosts"
+                        :key="idx">
+                            <td class="costs-list__category"> {{ cost.category_title }} </td>
+                            <td class="costs-list__sum"> {{ cost.sum }} € </td>
                             <td class="costs-list__text"> 
                                 <div class="costs-list__text-wrapper">
-                                    Text Text Text Text Text Text Text Text Text Text Text Text
-                                    Text Text Text Text Text Text Text Text Text Text Text Text
+                                    {{ cost.text }}
                                 </div>
                             </td>
                             <td class="costs-list__actions">
@@ -46,7 +46,9 @@ import {
     mdiPencil,
     mdiDelete,
     mdiPlusThick
-} from '@mdi/js'
+} from '@mdi/js';
+
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -57,7 +59,8 @@ export default {
         mdiPlusThick
       },
     }
-  }
+  },
+  computed: mapGetters(['getAllCosts']),
 }
 </script>
 
@@ -73,13 +76,13 @@ export default {
             height: 80%;
         }
         &__category{
-            width: 20%;
+            width: 15%;
         }
         &__sum{
             width: 15%;
         }
         &__text{
-            width: 50%;
+            width: 55%;
             &-wrapper {
                 width: 100%;
                 word-break: break-all;

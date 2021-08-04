@@ -4,7 +4,7 @@
       <v-form v-if="isShow">
         <v-select
             v-model="note.category"
-            :items="categories"
+            :items="getAllCategoriesTitle"
             label="Category"
             required>
         </v-select>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
     props: {
@@ -51,9 +52,9 @@ export default {
                 text: '',
                 date: null,
             },
-            categories: ['1', '2', '3'], // временно
         }
     },
+    computed: mapGetters(['getAllCategoriesTitle']),
     methods: {
         formatDate(date) {
             const options = {
