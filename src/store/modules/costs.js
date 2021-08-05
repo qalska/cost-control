@@ -8,16 +8,16 @@ export default {
             const costs = await res.json()
 
             ctx.commit('updateCosts', costs)
-        }
+        },
     },
     mutations: {
         updateCosts(state, costs) {
             state.costs = costs;
-        },
+        }
     },
     getters: {
         getAllCosts(state) {
-            return state.costs;
+            return state.costs.reverse();
         }
     },
 }

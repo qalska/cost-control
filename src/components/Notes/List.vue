@@ -77,7 +77,6 @@ export default {
         mdiPencil,
         mdiDelete,
       },
-      categories: ['1', '2', '3'] // временно
     }
   },
   methods: {

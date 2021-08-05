@@ -58,28 +58,40 @@
   ],
   "costs": [
     {
-      "id": 1,
-      "category_title": "rent",
+      "categoryTitle": "rent",
       "sum": "1 200",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien."
     },
     {
-      "id": 2,
-      "category_title": "food",
+      "categoryTitle": "food",
       "sum": "200",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
     },
     {
-      "id": 3,
-      "category_title": "clothing and cosmetics",
+      "categoryTitle": "clothing and cosmetics",
       "sum": "100",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien."
     },
     {
-      "id": 4,
-      "category_title": "travels",
+      "categoryTitle": "travels",
       "sum": "300",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+    },
+    {
+      "categoryTitle": "rent",
+      "sum": "1000",
+      "text": "asd"
+    },
+    {
+      "categoryTitle": "car",
+      "sum": "100",
+      "text": "fuel"
+    },
+    {
+      "id": 7,
+      "categoryTitle": "car",
+      "sum": "20",
+      "text": "fuel"
     }
   ]
 }

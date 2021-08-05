@@ -8,6 +8,9 @@
       </v-btn>
     </div>
 
+    <create 
+    :isShow="isShow" />
+
     <div class="costs-list__wrapper mt-4">
         <div class="mr-2">
             <v-simple-table class="costs-list__table">
@@ -15,7 +18,7 @@
                     <tbody>
                         <tr v-for="(cost, idx) in getAllCosts"
                         :key="idx">
-                            <td class="costs-list__category"> {{ cost.category_title }} </td>
+                            <td class="costs-list__category"> {{ cost.categoryTitle }} </td>
                             <td class="costs-list__sum"> {{ cost.sum }} € </td>
                             <td class="costs-list__text"> 
                                 <div class="costs-list__text-wrapper">
@@ -33,6 +36,44 @@
                                 </div>
                             </td>
                         </tr>
+
+                        <!-- <tr>
+                            <v-form v-show="isShow">
+                                <v-select
+                                    v-model="cost.categoryTitle"
+                                    :items="getAllCategoriesTitle"
+                                    label="Category"
+                                    required>
+                                </v-select>
+
+                                <v-text-field
+                                    v-model="cost.sum"
+                                    label="Sum"
+                                    required>
+                                </v-text-field>
+
+                                <v-text-field
+                                    v-model="cost.text"
+                                    label="Text"
+                                    required>
+                                </v-text-field>
+
+                                <div class="mb-4 d-flex justify-end">
+                                    <v-btn
+                                        color="success"
+                                        @click="addCost">
+                                        Add
+                                    </v-btn>
+
+                                    <v-btn
+                                        color="error"
+                                        class="ml-4"
+                                        @click="changeIsShow()">
+                                        Close
+                                    </v-btn>
+                                </div>
+                            </v-form>
+                        </tr> -->
                     </tbody>
                 </template>
             </v-simple-table>
@@ -42,6 +83,8 @@
 </template>
 
 <script>
+import Create from '../Costs/Create.vue';
+
 import {
     mdiPencil,
     mdiDelete,
@@ -51,6 +94,7 @@ import {
 import { mapGetters } from 'vuex';
 
 export default {
+  components: { Create },
   data() {
     return {
       icons: {
@@ -58,6 +102,7 @@ export default {
         mdiDelete,
         mdiPlusThick
       },
+      isShow: false
     }
   },
   computed: mapGetters(['getAllCosts']),
