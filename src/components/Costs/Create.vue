@@ -24,7 +24,8 @@
             <div class="mb-4 d-flex justify-end">
                 <v-btn
                     color="success"
-                    @click="addCost()">
+                    type="submit"
+                    @click.prevent="addCost()">
                     Add
                 </v-btn>
 
@@ -40,7 +41,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     props: {
@@ -59,31 +60,25 @@ export default {
             }
         }
     },
-    computed: mapGetters([ 'getAllCategoriesTitle' ]),
+    computed: mapGetters([ 'getAllCategoriesTitle']),
     methods: {
-        async addCost() {
+        ...mapGetters(['getLastCostId']),
+        ...mapActions(['postCost']),
+        addCost() {
             let newCost = {
                 ...this.cost,
+                id: this.getLastCostId++,
                 categoryTitle: this.cost.categoryTitle,
                 sum: this.cost.sum,
                 text: this.cost.text,
             }
 
-            fetch('http://localhost:3000/costs', {
-                method: 'POST',
-                body: JSON.stringify(newCost),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            }).then( response => {
-                console.log( response.json() );
-            })
+            this.postCost(newCost);
 
             this.cost.categoryTitle = '';
             this.cost.sum = '';
             this.cost.text = '';
-        }
+        },
     }
 
 
