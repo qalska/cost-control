@@ -18,7 +18,7 @@
                     <tbody>
                         <tr v-for="(cost, idx) in getAllCosts"
                         :key="idx">
-                            <td class="costs-list__category"> {{ cost.categoryTitle }} </td>
+                            <td class="costs-list__category"> {{ getAllCategories.find(item => item.id === cost.category).title }} </td>
                             <td class="costs-list__sum"> {{ cost.sum }} € </td>
                             <td class="costs-list__text"> 
                                 <div class="costs-list__text-wrapper">
@@ -102,10 +102,11 @@ export default {
         mdiDelete,
         mdiPlusThick
       },
-      isShow: false
+      isShow: false,
     }
   },
-  computed: mapGetters(['getAllCosts']),
+  computed: mapGetters(['getAllCosts', 'getAllCategories']),
+  methods: mapGetters(['getTitleById']),
 }
 </script>
 

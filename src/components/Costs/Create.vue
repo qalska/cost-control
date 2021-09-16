@@ -3,10 +3,13 @@
 
         <v-form v-show="isShow">
             <v-select
-                v-model="cost.categoryTitle"
-                :items="getAllCategoriesTitle"
+                v-model="cost.category"
+                :items="getAllCategories"
+                item-text="title"
+                item-value="id"
                 label="Category"
-                required>
+                persistent-hint
+                return-object>
             </v-select>
 
             <v-text-field
@@ -54,29 +57,34 @@ export default {
     data() {
         return {
             cost: {
-                categoryTitle: '',
+                id: null,
+                category: null,
                 sum: null,
                 text: ''
             }
         }
     },
-    computed: mapGetters([ 'getAllCategoriesTitle']),
+    computed: mapGetters([ 'getAllCategories', 'getLastCostId']),
     methods: {
-        ...mapGetters(['getLastCostId']),
-        ...mapActions(['postCost']),
+        ...mapActions(['postCost', 'updateCategoryTotal']),
         addCost() {
             let newCost = {
                 ...this.cost,
-                id: this.getLastCostId++,
-                categoryTitle: this.cost.categoryTitle,
+                id: this.getLastCostId,
+                category: this.cost.category.id,
                 sum: this.cost.sum,
                 text: this.cost.text,
             }
 
             this.postCost(newCost);
+            this.updateCategoryTotal({
+                sum: this.cost.sum,
+                category: this.cost.category
+            });
 
-            this.cost.categoryTitle = '';
-            this.cost.sum = '';
+            this.cost.id = null;
+            this.cost.category = null;
+            this.cost.sum = null;
             this.cost.text = '';
         },
     }
