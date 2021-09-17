@@ -21,6 +21,11 @@ export default {
                 console.log( response.json() );
                 commit('addCost', payload);
             })
+        },
+        async deleteCost({ commit }, id) {
+            fetch('http://localhost:3000/costs/' + id, {
+                method: 'DELETE',
+            })
         }
     },
     mutations: {
@@ -29,7 +34,7 @@ export default {
         },
         addCost(state, cost) {
             state.costs.push(cost);
-        }
+        },
     },
     getters: {
         getAllCosts(state) {

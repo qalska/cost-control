@@ -16,9 +16,9 @@
             <v-simple-table class="costs-list__table">
                 <template v-slot:default>
                     <tbody>
-                        <tr v-for="(cost, idx) in getAllCosts"
-                        :key="idx">
-                            <td class="costs-list__category"> {{ getAllCategories.find(item => item.id === cost.category).title }} </td>
+                        <tr v-for="cost in getAllCosts"
+                        :key="cost.id">
+                            <td class="costs-list__category"> {{ getCategoryById(cost.category).title }} </td>
                             <td class="costs-list__sum"> {{ cost.sum }} € </td>
                             <td class="costs-list__text"> 
                                 <div class="costs-list__text-wrapper">
@@ -30,7 +30,8 @@
                                     <v-btn icon text class="costs-list__edit" >
                                         <v-icon>{{ icons.mdiPencil }}</v-icon>
                                     </v-btn>
-                                    <v-btn icon text class="costs-list__delete ml-2">
+                                    <v-btn icon text class="costs-list__delete ml-2"
+                                    @click="removeCost(cost.id, cost.sum, cost.category)">
                                         <v-icon>{{ icons.mdiDelete }}</v-icon>
                                     </v-btn>
                                 </div>
@@ -91,7 +92,7 @@ import {
     mdiPlusThick
 } from '@mdi/js';
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: { Create },
@@ -106,7 +107,19 @@ export default {
     }
   },
   computed: mapGetters(['getAllCosts', 'getAllCategories']),
-  methods: mapGetters(['getTitleById']),
+  methods: {
+    ...mapActions(['deleteCost', 'updateCategoryTotal']),
+    removeCost(id, sum, category) {
+        this.deleteCost(id);
+        this.updateCategoryTotal({
+            sum: -sum,
+            category: getCategoryById(category)
+        });
+    },
+    getCategoryById(id) {
+        return this.getAllCategories.find(item => item.id === id);
+    }
+  }
 }
 </script>
 

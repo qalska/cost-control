@@ -21,8 +21,6 @@ export default {
                     'Content-type': 'application/json; charset=UTF-8',
                     'Accept': 'application/json'
                 }
-            }).then(response => {
-                console.log( response.json() );
             })
         }
     },
@@ -34,6 +32,6 @@ export default {
     getters: {
         getAllCategories(state) {
             return state.categories;
-        },
+        }
     },
 }
