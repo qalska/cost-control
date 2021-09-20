@@ -18,7 +18,7 @@
                     <tbody>
                         <tr v-for="cost in getAllCosts"
                         :key="cost.id">
-                            <td class="costs-list__category"> {{ getCategoryById(cost.category).title }} </td>
+                            <td class="costs-list__category"> {{ getCategoryTitleById(cost.category) }} </td>
                             <td class="costs-list__sum"> {{ cost.sum }} € </td>
                             <td class="costs-list__text"> 
                                 <div class="costs-list__text-wrapper">
@@ -37,44 +37,6 @@
                                 </div>
                             </td>
                         </tr>
-
-                        <!-- <tr>
-                            <v-form v-show="isShow">
-                                <v-select
-                                    v-model="cost.categoryTitle"
-                                    :items="getAllCategoriesTitle"
-                                    label="Category"
-                                    required>
-                                </v-select>
-
-                                <v-text-field
-                                    v-model="cost.sum"
-                                    label="Sum"
-                                    required>
-                                </v-text-field>
-
-                                <v-text-field
-                                    v-model="cost.text"
-                                    label="Text"
-                                    required>
-                                </v-text-field>
-
-                                <div class="mb-4 d-flex justify-end">
-                                    <v-btn
-                                        color="success"
-                                        @click="addCost">
-                                        Add
-                                    </v-btn>
-
-                                    <v-btn
-                                        color="error"
-                                        class="ml-4"
-                                        @click="changeIsShow()">
-                                        Close
-                                    </v-btn>
-                                </div>
-                            </v-form>
-                        </tr> -->
                     </tbody>
                 </template>
             </v-simple-table>
@@ -87,7 +49,6 @@
 import Create from '../Costs/Create.vue';
 
 import {
-    mdiPencil,
     mdiDelete,
     mdiPlusThick
 } from '@mdi/js';
@@ -99,7 +60,6 @@ export default {
   data() {
     return {
       icons: {
-        mdiPencil,
         mdiDelete,
         mdiPlusThick
       },
@@ -116,9 +76,9 @@ export default {
             category: getCategoryById(category)
         });
     },
-    getCategoryById(id) {
-        return this.getAllCategories.find(item => item.id === id);
-    }
+    getCategoryTitleById(id) {
+        return this.getAllCategories.find(item => item.id === id).title;
+    },
   }
 }
 </script>
