@@ -32,6 +32,22 @@ export default {
     getters: {
         getAllCategories(state) {
             return state.categories;
+        },
+        getCategoriesTitles(state) {
+            const titles = [];
+
+            state.categories.forEach(item => {
+                titles.push(item.title);
+            })
+            return titles;
+        },
+        getCategoriesTotals(state) {
+            const totals = [];
+
+            state.categories.forEach(item => {
+                totals.push(item.total);
+            })
+            return totals;
         }
     },
 }

@@ -1,15 +1,42 @@
 <template>
   <div>
-    chart
+    <canvas class="chart" ref="canvas"></canvas>
   </div>
 </template>
 
 <script>
-export default {
+import { mapGetters } from 'vuex';
 
+export default {
+  computed: mapGetters([ 'getCategoriesTitles', 'getCategoriesTotals' ]),
+  mounted() {
+      let chart = new Chart(this.$refs.canvas, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: this.getCategoriesTotals,
+            backgroundColor: [
+              '#FFCC00', '#FF6600', '#CC0000', '#CC0066', '#6600CC', '#3300CC', '#666699', '#006666', '#006633', '#666600', '#666666'
+            ]
+          }],
+          labels: this.getCategoriesTitles
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+          }
+        },
+      })
+  }
 }
 </script>
 
 <style>
-
+  .chart {
+    width: 500px;
+    margin-top: 1.2em;
+  }
 </style>

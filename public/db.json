@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "rent",
-      "total": 3200
+      "total": 2200
     },
     {
       "id": 2,
@@ -80,12 +80,6 @@
       "category": 5,
       "sum": "300",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
-    },
-    {
-      "id": 5,
-      "category": 1,
-      "sum": "1000",
-      "text": "asd"
     }
   ]
 }
