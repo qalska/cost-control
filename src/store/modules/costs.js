@@ -37,10 +37,10 @@ export default {
         },
     },
     getters: {
-        getAllCosts(state) {
+        allCosts(state) {
             return state.costs.slice().reverse();
         },
-        getLastCostId(state) {
+        lastCostId(state) {
             return state.costs[state.costs.length - 1].id + 1;
         }
     },

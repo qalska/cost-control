@@ -4,12 +4,12 @@ export default {
     },
     actions: {
         async fetchCategories(ctx) {
-            const res = await fetch('http://localhost:3000/categories')
-            const categories = await res.json()
+            const res = await fetch('http://localhost:3000/categories');
+            const categories = await res.json();
 
-            ctx.commit('updateCategories', categories)
+            ctx.commit('updateCategories', categories);
         },
-        async updateCategoryTotal({ commit }, {sum, category}) {
+        async updateCategoryTotal(ctx, {sum, category}) {
             const res = await fetch('http://localhost:3000/categories/' + category.id, {
                 method: 'PUT',
                 body: JSON.stringify({
@@ -22,18 +22,25 @@ export default {
                     'Accept': 'application/json'
                 }
             })
+            const updatedCategory = await res.json();
+            console.log(updatedCategory)
+
+            ctx.commit('updateCategoriyTotal', updatedCategory)
         }
     },
     mutations: {
         updateCategories(state, categories) {
             state.categories = categories;
+        },
+        updateCategoriyTotal(state, updatedCategory) {
+            state.categories.splice(updatedCategory.id, 1, updatedCategory);
         }
     },
     getters: {
-        getAllCategories(state) {
+        allCategories(state) {
             return state.categories;
         },
-        getCategoriesTitles(state) {
+        categoriesTitles(state) {
             const titles = [];
 
             state.categories.forEach(item => {
@@ -41,7 +48,7 @@ export default {
             })
             return titles;
         },
-        getCategoriesTotals(state) {
+        categoriesTotals(state) {
             const totals = [];
 
             state.categories.forEach(item => {

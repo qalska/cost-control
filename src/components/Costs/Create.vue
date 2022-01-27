@@ -4,7 +4,7 @@
         <v-form v-show="isShow">
             <v-select
                 v-model="cost.category"
-                :items="getAllCategories"
+                :items="allCategories"
                 item-text="title"
                 item-value="id"
                 label="Category"
@@ -64,13 +64,13 @@ export default {
             }
         }
     },
-    computed: mapGetters([ 'getAllCategories', 'getLastCostId']),
+    computed: mapGetters([ 'allCategories', 'lastCostId']),
     methods: {
         ...mapActions(['postCost', 'updateCategoryTotal']),
         addCost() {
             let newCost = {
                 ...this.cost,
-                id: this.getLastCostId,
+                id: this.lastCostId,
                 category: this.cost.category.id,
                 sum: this.cost.sum,
                 text: this.cost.text,

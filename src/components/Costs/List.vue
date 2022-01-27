@@ -16,7 +16,7 @@
             <v-simple-table class="costs-list__table">
                 <template v-slot:default>
                     <tbody>
-                        <tr v-for="cost in getAllCosts"
+                        <tr v-for="cost in allCosts"
                         :key="cost.id">
                             <td class="costs-list__category"> {{ getCategoryTitleById(cost.category) }} </td>
                             <td class="costs-list__sum"> {{ cost.sum }} € </td>
@@ -66,19 +66,24 @@ export default {
       isShow: false,
     }
   },
-  computed: mapGetters(['getAllCosts', 'getAllCategories']),
+  computed: mapGetters(['allCosts', 'allCategories']),
   methods: {
     ...mapActions(['deleteCost', 'updateCategoryTotal']),
-    removeCost(id, sum, category) {
+    removeCost(id, sum, categoryId) {
         this.deleteCost(id);
         this.updateCategoryTotal({
             sum: -sum,
-            category: getCategoryById(category)
+            category: this.getCategoryById(categoryId)
         });
     },
-    getCategoryTitleById(id) {
-        return this.getAllCategories.find(item => item.id === id).title;
+    getCategoryById(id) {
+        return this.allCategories.find(item => item.id === id);
     },
+    getCategoryTitleById(id) {
+        const category = this.getCategoryById(id);
+        if (category) return category.title;
+        else return 'no category';
+    }
   }
 }
 </script>

@@ -4,7 +4,7 @@
       <v-form v-if="isShow">
         <v-select
             v-model="note.category"
-            :items="getAllCategoriesTitle"
+            :items="categoriesTitles"
             label="Category"
             required>
         </v-select>
@@ -54,7 +54,7 @@ export default {
             },
         }
     },
-    computed: mapGetters(['getAllCategoriesTitle']),
+    computed: mapGetters(['categoriesTitles']),
     methods: {
         formatDate(date) {
             const options = {

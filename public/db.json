@@ -3,12 +3,12 @@
     {
       "id": 1,
       "title": "rent",
-      "total": 2200
+      "total": 1000
     },
     {
       "id": 2,
       "title": "car",
-      "total": null
+      "total": 100
     },
     {
       "id": 3,
@@ -18,7 +18,7 @@
     {
       "id": 4,
       "title": "public transport",
-      "total": null
+      "total": 0
     },
     {
       "id": 5,
@@ -58,12 +58,6 @@
   ],
   "costs": [
     {
-      "id": 1,
-      "category": 1,
-      "sum": "1 200",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien."
-    },
-    {
       "id": 2,
       "category": 8,
       "sum": "200",
@@ -80,6 +74,12 @@
       "category": 5,
       "sum": "300",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae enim sapien. Aliquam interdum dui id ante imperdiet, quis gravida massa pulvinar."
+    },
+    {
+      "id": 5,
+      "category": 2,
+      "sum": "100",
+      "text": "j"
     }
   ]
 }
